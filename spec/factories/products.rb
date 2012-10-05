@@ -5,4 +5,8 @@ FactoryGirl.define do
     name "MyProduct"
     ASIN "ABCDEFGHIJ"
   end
+
+  factory :invalid_product, parent: :product do |f|
+    f.name nil
+  end
 end
