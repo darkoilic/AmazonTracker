@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :product do
     name "MyProduct"
-    ASIN "MyString"
+    ASIN "ABCDEFGHIJ"
   end
 end

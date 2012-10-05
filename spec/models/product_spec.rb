@@ -17,11 +17,20 @@ describe Product do
   end
 
   it "requires ASIC field" do
-    @product.ASIC = nil
+    @product.ASIN = nil
     @product.should_not be_valid
   end
 
+  it "requires ASIC to be 10 digit long" do
+    @product.ASIN = "ABCDEFGHIJ"
+    @product.should be_valid
+
+    @product.ASIN = "ABCDEFGH"
+    @product.should_not be_valid
+  end
+
+
   it {should respond_to(:name)}
-  it {should respond_to(:ASIC)}
+  it {should respond_to(:ASIN)}
   it {should respond_to(:prices)}
 end
