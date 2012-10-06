@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Product do
   before(:each) do
-    @product = FactoryGirl.build(:product)
+    FactoryGirl.create(:price)
+    @product = FactoryGirl.create(:product)
   end
 
   subject(@product)
@@ -33,4 +34,11 @@ describe Product do
   it {should respond_to(:name)}
   it {should respond_to(:ASIN)}
   it {should respond_to(:prices)}
+  it {should respond_to(:current_price)}
+  it {should respond_to(:highest_price)}
+  it {should respond_to(:lowest_price)}
+
+  it "returns a valid current price" do
+    @product.current_price.respond_to?(value)
+  end
 end

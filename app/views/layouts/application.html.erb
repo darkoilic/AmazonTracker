@@ -4,11 +4,20 @@
   <title>AmazonTracker</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+<div class="navbar">
+  <div class="navbar-inner">
+    <ul class="nav">
+      <li class="<%= 'active' if current_page?(products_path) %>"><%= link_to "Products", products_path %></li>
+      <li class="<%= 'active' if current_page?(new_product_path) %>"><%= link_to "New Product", new_product_path %></li>
+    </ul>
+  </div>
+</div>
+<div class="container">
+  <%= yield %>
+</div>
 </body>
 </html>

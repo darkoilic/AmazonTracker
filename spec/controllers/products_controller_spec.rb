@@ -2,6 +2,20 @@ require 'spec_helper'
 
 describe ProductsController do
 
+  describe "GET 'index'" do
+    it "gets a list of products" do
+      get :index
+      assigns(:products).should eq(Product.all)
+    end
+
+    it "products have valid prices" do
+      get :index
+      assigns(:products).each do |product|
+        product.current_price.respond_to?(value)
+      end
+    end
+  end
+
   describe "GET 'new'" do
     it "returns http success" do
       get 'new'
@@ -27,7 +41,7 @@ describe ProductsController do
 
       it "redirects to the new product" do
         post :create, product: FactoryGirl.attributes_for(:product)
-        response.should redirect_to Product.last
+        response.should redirect_to products_path
       end
     end
 
